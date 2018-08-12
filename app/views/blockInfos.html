@@ -1,25 +1,30 @@
-<div class="container" style="padding-top: 50px;">
+<div class="container" style="padding-top: 10px;">
 
-    <h1>
-        <small>View information abount Cobuna <i class="fa fa-cube"></i>Block {{number}}</small>
-    </h1>
+
 
     <div id="block-97785883" class="blockdiv">
-
-        <div style="padding-bottom:30px;width:100%;text-align:right;clear:both">
-            <button class="btn btn-primary">{{conf}}</button>
-	    <a class="btn btn-primary btn-sm" ng-class="{disabled:firstBlock}" href="./#/block/{{blockNumber-1}}">&lt; Prev</a>
-            <a class="btn btn-primary btn-sm" ng-class="{disabled: lastBlock}" href="./#/block/{{blockNumber+1}}">Next &gt;</a>
+        <div style="display: flex;justify-content: space-between">
+        <h4 style="text-align:left; margin-bottom:10px;color:#000;position:relative">Block Information
+            <!--  <small>Viewing information about Cobuna <i class="fa fa-cube"></i>Block #{{number}}</small>-->
+        </h4>
+        <div style="padding-bottom:10px;text-align:right;clear:both;float: right">
+            <!--<button class="btn btn-primary">{{conf}}</button>-->
+            <a class="btn btn-outline-primary btn-sm" ng-class="{disabled:firstBlock}" href="./#/block/{{blockNumber-1}}" style="width:95px">&lt;
+                Previous</a>
+            <a class="btn btn-outline-primary btn-sm" ng-class="{disabled: lastBlock}" href="./#/block/{{blockNumber+1}}" style="width:95px">Next
+                &gt;</a>
+        </div>
         </div>
         <table class="table table-striped">
-            <tbody><tr>
+            <tbody>
+            <tr>
                 <th colspan="2" style="text-align:left">Summary</th>
             </tr>
             <tr>
                 <td>Block Number</td>
                 <td><a href="./#/block/{{blockNumber}}">{{number}}</a></td>
             </tr>
-	    <tr>
+            <tr>
                 <td>Block Hash</td>
                 <td>{{ hash }}</td>
             </tr>
@@ -69,44 +74,43 @@
         </table>
     </div>
 
-    <h2 style="margin-top: 30px;">
-      Transactions
-      <small>- contained in current block</small>
-    </h2>
+    <h4 style="text-align:left; margin-bottom:10px;color:#000;position:relative">Transactions in the block:
+        <!--  <small>Viewing information about Cobuna <i class="fa fa-cube"></i>Block #{{number}}</small>-->
+    </h4>
 
     <div ng-repeat="tx in transactions">
-      <table class="table table-striped">
-          <tbody>
-          <tr>
-              <th colspan="2" style="text-align:left">Transaction #{{$index+1}}</th>
-          </tr>
-          <tr>
-              <td>Hash #</td>
-              <td><a href="./#/transaction/{{tx.hash}}">{{tx.hash}}</a></td>
-          </tr>
-          <tr>
-              <td>From</td>
-              <td><a href="./#/address/{{tx.from}}">{{tx.from}}</a></td>
-          </tr>
-          <tr>
-              <td>To</td>
-              <td><a href="./#/address/{{tx.to}}">{{tx.to}}</a></td>
-          </tr>
-          <tr>
-              <td>Gas</td>
-              <td>{{tx.gas}}</a></td>
-          </tr>
-          <tr>
-              <td>Input</td>
-              <td>{{tx.input}}</a></td>
-          </tr>
-          <tr>
-              <td>Value</td>
-              <td>{{tx.value}}</a></td>
-          </tr>
-          </tbody>
-      </table>
-      <hr>
+        <table class="table table-striped">
+            <tbody>
+            <tr>
+                <th colspan="2" style="text-align:left">Transaction #{{$index+1}}</th>
+            </tr>
+            <tr>
+                <td>Hash #</td>
+                <td><a href="./#/transaction/{{tx.hash}}">{{tx.hash}}</a></td>
+            </tr>
+            <tr>
+                <td>From</td>
+                <td><a href="./#/address/{{tx.from}}">{{tx.from}}</a></td>
+            </tr>
+            <tr>
+                <td>To</td>
+                <td><a href="./#/address/{{tx.to}}">{{tx.to}}</a></td>
+            </tr>
+            <tr>
+                <td>Gas</td>
+                <td>{{tx.gas}}</a></td>
+            </tr>
+            <tr>
+                <td>Input</td>
+                <td>{{tx.input}}</a></td>
+            </tr>
+            <tr>
+                <td>Value</td>
+                <td>{{tx.value}}</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <hr>
     </div>
 
 </div>
