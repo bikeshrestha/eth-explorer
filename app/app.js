@@ -29,7 +29,13 @@ angular.module('ethExplorer', ['ngRoute','ui.bootstrap'])
         .run(function($rootScope) {
                 var web3 = new Web3();
                 $.getJSON( "./config.json" , function( result ){
-        	       web3.setProvider(new web3.providers.HttpProvider(result.rpcUrl));
+                    for(var key in result) {
+                        web3.setProvider(new web3.providers.HttpProvider(result[key]));
+                        if(web3.isConnected()){
+                            console.log("connected to :", result[key]);
+                            break;
+                        }
+                    }
                     if(!web3.isConnected()) {
                         $('#connectwarning').modal({keyboard:false,backdrop:'static'}) 
                         $('#connectwarning').modal('show') 
