@@ -31,7 +31,7 @@
             <tr>
                 <td>Received Time</td>
                 <td>
-                    {{timestamp}}
+                    {{timestamp * 1000 | date:'medium' }}
                 </td>
             </tr>
           <!--  <tr>
@@ -88,7 +88,7 @@
                 <td>Hash #</td>
                 <td><a href="./#/transaction/{{tx.hash}}">{{tx.hash}}</a></td>
             </tr>
-            <tr>
+            <!--<tr>
                 <td>From</td>
                 <td><a href="./#/address/{{tx.from}}">{{tx.from}}</a></td>
             </tr>
@@ -107,7 +107,7 @@
             <tr>
                 <td>Value</td>
                 <td>{{tx.value}}</a></td>
-            </tr>
+            </tr>-->
             </tbody>
         </table>
         <hr>
