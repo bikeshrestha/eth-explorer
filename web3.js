@@ -8,7 +8,7 @@
   for (var key in rpcendpoint){
       web3.setProvider(new web3.providers.HttpProvider(rpcendpoint[key]));
       if(web3.isConnected()){
-          console.log("connected to :", result[key]);
+          console.log("connected to :", rpcendpoint[key]);
         break;
       }
   }

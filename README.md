@@ -86,3 +86,10 @@ More Images
 ### Transaction
 
 ![Block Info](http://res.cloudinary.com/nixar-work/image/upload/v1529737186/Screen_Shot_2018-06-23_at_09.59.16.png)
+
+
+## Docker build
+Build: docker build -t cobuna-explorer:1.0.0 .
+
+## Docker run
+Run: docker run -p 8000:8000 cobuna-explorer:1.0.0
