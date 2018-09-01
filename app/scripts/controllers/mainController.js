@@ -10,11 +10,57 @@ angular.module('ethExplorer')
 
 	// get latest 50 blocks
 	$scope.blocks = [];
-	for (var i = 0; i < maxBlocks; ++i) {
+/*	for (var i = 0; i < maxBlocks; ++i) {
 	    $scope.blocks.push(web3.eth.getBlock(blockNum - i));
-	}
-	
-        $scope.processRequest = function() {
+	}*/
+	/*for (var i = 0; i < maxBlocks; ++i) {
+	    web3.eth.getBlock(blockNum - i, function(error,block){
+	        if(!error){
+	            console.log(block);
+	            j++;
+	            console.log(j)
+                $scope.blocks.push(block);
+            }else{
+                console.log(error);
+            }
+        })
+    if(j===10){
+
+    }
+
+
+    }*/
+
+
+
+        function getBlockInfo (address) {
+            return new Promise (function (resolve, reject) {
+                web3.eth.getBlock(address, function (error, result) {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(result);
+                    }
+                })
+            })}
+
+for (var i = 0; i < maxBlocks; i++)
+        {
+            getBlockInfo(blockNum-i)
+                .then(function (result) {
+                    console.log(result);
+                    $scope.blocks.push(result);
+                })
+                .catch(function (error) {
+                    console.log(error.message);
+                });
+
+        }
+
+
+
+
+            $scope.processRequest = function() {
              var requestStr = $scope.ethRequest.split('0x').join('');
 
             if (requestStr.length === 40)

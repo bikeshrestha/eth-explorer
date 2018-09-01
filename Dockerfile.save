@@ -1,0 +1,6 @@
+FROM ubuntu:16.04
+
+RUN apk add --no-cache make gcc musl-dev linux-header
+COPY . /cobuna
+
+RUN cd cobuna && make geth
