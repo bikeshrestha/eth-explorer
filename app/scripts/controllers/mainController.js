@@ -7,30 +7,17 @@ angular.module('ethExplorer')
 	if (maxBlocks > blockNum) {
 	    maxBlocks = blockNum + 1;
 	}
-
+    var j = 0;
 	// get latest 50 blocks
 	$scope.blocks = [];
-/*	for (var i = 0; i < maxBlocks; ++i) {
+	for (var i = 0; i < maxBlocks; ++i) {
+	    console.log(web3.eth.getBlock(blockNum - i));
 	    $scope.blocks.push(web3.eth.getBlock(blockNum - i));
-	}*/
-	/*for (var i = 0; i < maxBlocks; ++i) {
-	    web3.eth.getBlock(blockNum - i, function(error,block){
-	        if(!error){
-	            console.log(block);
-	            j++;
-	            console.log(j)
-                $scope.blocks.push(block);
-            }else{
-                console.log(error);
-            }
-        })
-    if(j===10){
 
-    }
+	}
+	
 
-
-    }*/
-
+/*
 
 
         function getBlockInfo (address) {
@@ -49,6 +36,8 @@ for (var i = 0; i < maxBlocks; i++)
             getBlockInfo(blockNum-i)
                 .then(function (result) {
                     console.log(result);
+                    j++
+                    console.log(j);
                     $scope.blocks.push(result);
                 })
                 .catch(function (error) {
@@ -58,35 +47,37 @@ for (var i = 0; i < maxBlocks; i++)
         }
 
 
+*/
 
 
-            $scope.processRequest = function() {
-             var requestStr = $scope.ethRequest.split('0x').join('');
+    $scope.processRequest = function () {
+        var requestStr = $scope.ethRequest.split('0x').join('');
 
-            if (requestStr.length === 40)
-              return goToAddrInfos(requestStr)
-            else if(requestStr.length === 64) {
-              if(/[0-9a-zA-Z]{64}?/.test(requestStr))
-                return goToTxInfos('0x'+requestStr)
-              else if(/[0-9]{1,7}?/.test(requestStr))
+
+        if (requestStr.length === 40)
+            return goToAddrInfos(requestStr)
+        else if (requestStr.length === 64) {
+            if (/[0-9a-zA-Z]{64}?/.test(requestStr))
+                return goToTxInfos('0x' + requestStr)
+            else if (/[0-9]{1,7}?/.test(requestStr))
                 return goToBlockInfos(requestStr)
-            }else if(parseInt(requestStr) > 0)
-              return goToBlockInfos(parseInt(requestStr))
+        } else if (parseInt(requestStr) > 0)
+            return goToBlockInfos(parseInt(requestStr))
 
-            alert('Don\'t know how to handle '+ requestStr)
-        };
+        alert('Don\'t know how to handle ' + requestStr)
+    };
 
 
-        function goToBlockInfos(requestStr) {
-            $location.path('/block/'+requestStr);
-        }
+    function goToBlockInfos(requestStr) {
+        $location.path('/block/' + requestStr);
+    }
 
-        function goToAddrInfos(requestStr) {
-            $location.path('/address/'+requestStr);
-        }
+    function goToAddrInfos(requestStr) {
+        $location.path('/address/' + requestStr);
+    }
 
-         function goToTxInfos (requestStr) {
-             $location.path('/transaction/'+requestStr);
-        }
+    function goToTxInfos(requestStr) {
+        $location.path('/transaction/' + requestStr);
+    }
 
     });
