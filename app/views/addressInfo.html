@@ -1,4 +1,4 @@
-<div class="container" style="padding-top: 10px;">
+<div class="container-fluid" style="padding-top: 10px;">
 <h4 style="text-align:left; margin-bottom:10px;color:#000">Address Detail<!--
     <small>Viewing information about a Cobuna Address</small>-->
 </h4>
@@ -24,7 +24,7 @@
         <tr ng:if="code != '0x0'">
             <td>Smart Contract Code</td>
             <td>
-                <textarea readonly="readonly">{{code}}</textarea>
+                <textarea readonly="readonly" class="container-fluid">{{code}}</textarea>
             </td>
         </tr>
         <tr ng:if="code != '0x0'">

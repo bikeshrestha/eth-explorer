@@ -1,4 +1,4 @@
-<div class="container" style="padding-top: 10px;">
+<div class="container-fluid" style="padding-top: 10px;">
 
 
 
@@ -30,9 +30,9 @@
             </tr>
             <tr>
                 <td>Received Time</td>
-                <td>
-                    {{timestamp * 1000 | date:'medium' }}
-                </td>
+               
+                <td ng-if="timestamp>0">{{timestamp * 1000 | date:'medium' }}</td>
+                <td ng-if="!timestamp>0"></td>
             </tr>
           <!--  <tr>
                 <td>Difficulty</td>
@@ -46,7 +46,8 @@
             </tr> -->
             <tr>
                 <td>Size</td>
-                <td>{{size}} bytes</td>
+                <td ng-if="size > 0">{{size}} bytes</td>
+                <td ng-if="!size>0"></td>
             </tr>
            <!-- <tr>
                 <td>Miner</td>
